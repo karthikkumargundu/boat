@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <style>
+ 
+.myDiv1
+{
+    border: 1px solid black;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-right: 0px;
+  margin-left: 305px;
+  background-color: rgba(255, 250, 250, 0.63);
+  text-align: center;
+  height:350px;
+    width:60%;
+    
+}
+#map
+{
+    border: 1px solid black;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  margin-left: 555px;
+  background-color: rgba(255, 250, 250, 0.63);
+  text-align: center;
+  height:280px;
+    width:30%;
+}
+
+ h1 {text-align: center;}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+}
+table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+body {
+  background-image: url('https://images.unsplash.com/photo-1524522173746-f628baad3644?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1103&q=80.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+.button {
+  background-color: #f4511e;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:hover {opacity: 1}
+.button {
+  position: absolute;
+  left: 450px;
+  top: 320px;
+}
+.button1 {
+  background-color: #f4511e;
+  border: none;
+  color: white;
+  padding: 16px 25px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 1px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button1:hover {opacity: 1}
+.button1 {
+  position: absolute;
+  left: 450px;
+  top: 450px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: Black;
+}
+
+li {
+  float: center;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #5827e0;
+}
+</style>
+     <script>
+      // Initialize and add the map
+      function initMap() {
+        // The location of Uluru
+        const uluru = { lat: 12.29791, lng: 76.63925};
+        // The map, centered at Uluru
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 12,
+          center: uluru,
+        });
+        // The marker, positioned at Uluru
+        const marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+        });
+      }
+    </script>
+</head>
+<body>
+<div class="container">
+  <ul>
+        <li><a class="center" >DASHBOARD</a></li> 
+        </ul>       
+  <table  class="center">
+  
+    <thead>
+      <tr>
+        <th>HULLID</th>
+        <th>NO OF ENGINES</th>
+        <th>  </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="main: ${boatlist}">
+					<td th:text="${main.hullid}">HULL ID</td>
+					<td th:text="${main.noofengine}">NO OF ENGINE</td>
+					<td><form action="locationlist">
+         <button type="submit">VIEW</button>
+      </form>
+					</td>
+				</tr>
+    </tbody>
+  </table>
+</div>
+ <div class="myDiv1">  
+ <body>
+  <form action="enginelist">
+         <button class="button" type="submit">ENGINE</button>
+         
+      </form>
+      
+ </body>
+ 
+ <div id="map">
+      </div>
+      
+<script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap&libraries=&v=weekly"
+      async></script>  
+ 
+ </div>
+</body>
+</html>
